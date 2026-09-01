@@ -1,0 +1,107 @@
+---
+import { Star, Quote, ShieldCheck, Sparkles, CheckCircle2 } from 'lucide-astro';
+
+const testimonials = [
+  {
+    initials: "M. R.",
+    age: "42 anos",
+    modality: "Presencial na Zape Reequilíbrio",
+    text: "Cheguei ao consultório do Bauer à beira do burnout, sem conseguir dormir e com a sensação de carregar o mundo nas costas. A calma e a precisão da escuta dele ao longo das sessões me devolveram a clareza e a serenidade. Hoje vivo com muito mais presença e limite.",
+    theme: "Superação do Burnout & Ansiedade"
+  },
+  {
+    initials: "F. A.",
+    age: "36 anos",
+    modality: "Atendimento Online (São Paulo)",
+    text: "Eu tinha certo receio de fazer terapia online, mas a conexão e a profundidade foram imediatas. O Bauer tem uma sensibilidade rara e uma bagagem de 28 anos que faz cada sessão ser transformadora. Encontrei um novo sentido para a minha carreira e vida pessoal.",
+    theme: "Clareza & Autorrealização"
+  },
+  {
+    initials: "C. S.",
+    age: "29 anos",
+    modality: "Presencial na Zape Reequilíbrio",
+    text: "O ambiente da Zape em Hamburgo Velho já transmite uma paz indescritível antes mesmo da sessão começar. O processo terapêutico com o Bauer me ensinou a acolher minhas emoções sem me desesperar e a dizer não sem culpa. Sou imensamente grata.",
+    theme: "Autoconhecimento & Limites Saudáveis"
+  },
+  {
+    initials: "E. T.",
+    age: "51 anos",
+    modality: "Atendimento Online (Lisboa / Portugal)",
+    text: "Mesmo morando fora do Brasil, manter as sessões online com o Bauer é o momento mais importante da minha semana. Ele é um profissional excepcional, sereno, profundamente ético e assertivo. Mudou a forma como encaro os conflitos.",
+    theme: "Equilíbrio & Maturidade Emocional"
+  }
+];
+---
+
+<section id="depoimentos" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 border-t border-neutral-100">
+  
+  <div class="max-w-3xl mx-auto text-center space-y-4 mb-16">
+    <div class="inline-flex items-center gap-2 bg-forest-100 text-forest-900 text-xs font-semibold px-3.5 py-1.5 rounded-full uppercase tracking-wider">
+      <Sparkles class="w-3.5 h-3.5 text-forest-700" />
+      <span>Histórias de Reequilíbrio</span>
+    </div>
+    
+    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight text-forest-950 font-serif leading-tight">
+      Relatos anônimos de quem reencontrou a calma e a direção
+    </h2>
+    
+    <p class="text-base sm:text-lg text-neutral-600 font-normal leading-relaxed">
+      A confidencialidade é sagrada. Conheça a transformação de pacientes que encontraram no processo terapêutico um porto seguro para florescer.
+    </p>
+  </div>
+
+  <!-- Testimonials Grid -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    {testimonials.map((t) => (
+      <div class="bg-neutral-50 hover:bg-white rounded-[2rem] p-8 sm:p-9 border border-neutral-200/80 hover:border-forest-300 transition-all duration-300 hover:shadow-card-soft flex flex-col justify-between group">
+        
+        <div class="space-y-6">
+          <div class="flex items-center justify-between">
+            <div class="flex text-amber-400">
+              <Star class="w-4 h-4 fill-amber-400" />
+              <Star class="w-4 h-4 fill-amber-400" />
+              <Star class="w-4 h-4 fill-amber-400" />
+              <Star class="w-4 h-4 fill-amber-400" />
+              <Star class="w-4 h-4 fill-amber-400" />
+            </div>
+
+            <span class="text-xs font-semibold text-forest-800 bg-forest-100/70 px-3 py-1 rounded-full">
+              {t.theme}
+            </span>
+          </div>
+
+          <blockquote class="text-neutral-700 font-serif italic text-base sm:text-lg leading-relaxed">
+            "{t.text}"
+          </blockquote>
+        </div>
+
+        <div class="pt-6 mt-6 border-t border-neutral-200/60 flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-forest-900 text-accent-lime font-bold text-sm flex items-center justify-center font-serif">
+              {t.initials}
+            </div>
+            <div>
+              <p class="text-sm font-semibold text-forest-950">{t.initials}, {t.age}</p>
+              <p class="text-xs text-neutral-500">{t.modality}</p>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-1 text-[11px] text-forest-700 font-medium bg-forest-50 px-2.5 py-1 rounded-lg">
+            <ShieldCheck class="w-3.5 h-3.5 text-accent-leaf" />
+            <span>Relato Verificado</span>
+          </div>
+        </div>
+
+      </div>
+    ))}
+  </div>
+
+  <!-- Ethical CFP Notice -->
+  <div class="mt-8 text-center">
+    <p class="text-xs text-neutral-500 max-w-xl mx-auto flex items-center justify-center gap-1.5">
+      <ShieldCheck class="w-4 h-4 text-forest-700 inline flex-shrink-0" />
+      <span>Depoimentos anônimos voluntários com identidade preservada em estrito cumprimento ao Código de Ética Profissional do Psicólogo (CFP).</span>
+    </p>
+  </div>
+
+</section>

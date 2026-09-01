@@ -1,0 +1,141 @@
+---
+import { MessageCircle, MapPin, Video, HelpCircle, Shield, Sparkles, ArrowRight } from 'lucide-astro';
+
+// Contextual WhatsApp URLs
+const presencialMsg = encodeURIComponent("Olá, Bauer! Gostaria de agendar uma consulta *presencial* no consultório da *Zape Reequilíbrio* em Hamburgo Velho. Como podemos verificar os próximos horários?");
+const presencialUrl = `https://wa.me/5551999999999?text=${presencialMsg}`;
+
+const onlineMsg = encodeURIComponent("Olá, Bauer! Gostaria de saber mais e agendar uma sessão de *terapia online*. Poderia me passar as informações e próximos horários disponíveis?");
+const onlineUrl = `https://wa.me/5551999999999?text=${onlineMsg}`;
+
+const generalMsg = encodeURIComponent("Olá, Bauer! Conheci seu trabalho e gostaria de tirar algumas dúvidas sobre como funciona o processo terapêutico antes de agendar.");
+const generalUrl = `https://wa.me/5551999999999?text=${generalMsg}`;
+---
+
+<section id="agendamento" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+  
+  <div class="relative bg-gradient-to-br from-forest-950 via-forest-900 to-forest-850 rounded-[2.5rem] p-8 sm:p-12 lg:p-16 border border-forest-800 shadow-2xl overflow-hidden text-white">
+    
+    <!-- Ambient Glows -->
+    <div class="absolute -top-32 -left-32 w-80 h-80 bg-accent-lime/15 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute -bottom-32 -right-32 w-80 h-80 bg-sage-400/10 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="relative z-10 max-w-3xl mx-auto text-center space-y-4 mb-14">
+      <div class="inline-flex items-center gap-2 bg-forest-800 text-accent-lime text-xs font-semibold px-3.5 py-1.5 rounded-full uppercase tracking-wider border border-forest-700">
+        <Sparkles class="w-3.5 h-3.5" />
+        <span>Inicie Seu Atendimento</span>
+      </div>
+
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight text-white font-serif leading-tight">
+        Pronto para dar o primeiro passo rumo à sua <span class="italic text-accent-lime">serenidade</span>?
+      </h2>
+
+      <p class="text-neutral-300 text-base sm:text-lg leading-relaxed">
+        Sem formulários extensos. Escolha a opção desejada abaixo para iniciar uma conversa acolhedora e direta com o <strong>Psicólogo Bauer</strong> no WhatsApp.
+      </p>
+    </div>
+
+    <!-- 3 Direct Action Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 relative z-10">
+      
+      <!-- Card 1: Presencial -->
+      <div class="bg-forest-950/80 rounded-3xl p-7 border border-forest-700/80 flex flex-col justify-between hover:border-accent-lime/50 transition-all duration-300 group shadow-lg">
+        <div class="space-y-4">
+          <div class="w-12 h-12 rounded-2xl bg-forest-800 text-accent-lime flex items-center justify-center">
+            <MapPin class="w-6 h-6" />
+          </div>
+          <div>
+            <h3 class="text-xl font-bold font-serif text-white">Atendimento Presencial</h3>
+            <p class="text-xs text-accent-lime font-medium mt-1">Zape Reequilíbrio • Hamburgo Velho</p>
+          </div>
+          <p class="text-xs sm:text-sm text-neutral-300 leading-relaxed">
+            Para quem busca a experiência presencial e imersiva em um refúgio acolhedor no Rio Grande do Sul.
+          </p>
+        </div>
+
+        <div class="pt-6 mt-6 border-t border-forest-800">
+          <a 
+            href={presencialUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-full bg-forest-800 hover:bg-forest-700 text-white text-xs sm:text-sm font-semibold py-3.5 px-4 rounded-xl flex items-center justify-center gap-2 transition-all border border-forest-600 group-hover:border-accent-lime/40"
+          >
+            <MessageCircle class="w-4 h-4 text-accent-lime" />
+            <span>Agendar Presencial</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Card 2: Online (Featured) -->
+      <div class="bg-forest-900 rounded-3xl p-7 border-2 border-accent-lime/60 flex flex-col justify-between hover:border-accent-lime transition-all duration-300 group shadow-glow-lime relative">
+        <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-accent-lime text-forest-950 text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full shadow-sm">
+          Mais Prático
+        </span>
+
+        <div class="space-y-4 pt-1">
+          <div class="w-12 h-12 rounded-2xl bg-accent-lime text-forest-950 flex items-center justify-center">
+            <Video class="w-6 h-6" />
+          </div>
+          <div>
+            <h3 class="text-xl font-bold font-serif text-white">Atendimento Online</h3>
+            <p class="text-xs text-accent-lime font-medium mt-1">Todo o Brasil & Exterior</p>
+          </div>
+          <p class="text-xs sm:text-sm text-neutral-200 leading-relaxed">
+            Sessões seguras por videochamada no conforto e privacidade do seu espaço, sem trânsito ou deslocamentos.
+          </p>
+        </div>
+
+        <div class="pt-6 mt-6 border-t border-forest-700">
+          <a 
+            href={onlineUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-full bg-accent-lime hover:bg-accent-lime-hover text-forest-950 text-xs sm:text-sm font-bold py-3.5 px-4 rounded-xl flex items-center justify-center gap-2 transition-all shadow-md"
+          >
+            <MessageCircle class="w-4 h-4 text-forest-950" />
+            <span>Agendar Online</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Card 3: Dúvidas / Geral -->
+      <div class="bg-forest-950/80 rounded-3xl p-7 border border-forest-700/80 flex flex-col justify-between hover:border-accent-lime/50 transition-all duration-300 group shadow-lg">
+        <div class="space-y-4">
+          <div class="w-12 h-12 rounded-2xl bg-forest-800 text-accent-lime flex items-center justify-center">
+            <HelpCircle class="w-6 h-6" />
+          </div>
+          <div>
+            <h3 class="text-xl font-bold font-serif text-white">Tirar Dúvidas</h3>
+            <p class="text-xs text-accent-lime font-medium mt-1">Conversa Inicial de Esclarecimento</p>
+          </div>
+          <p class="text-xs sm:text-sm text-neutral-300 leading-relaxed">
+            Deseja entender como a abordagem terapêutica funciona para o seu caso antes de agendar?
+          </p>
+        </div>
+
+        <div class="pt-6 mt-6 border-t border-forest-800">
+          <a 
+            href={generalUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-full bg-forest-800 hover:bg-forest-700 text-white text-xs sm:text-sm font-semibold py-3.5 px-4 rounded-xl flex items-center justify-center gap-2 transition-all border border-forest-600 group-hover:border-accent-lime/40"
+          >
+            <MessageCircle class="w-4 h-4 text-accent-lime" />
+            <span>Tirar Dúvidas</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Reassurance Banner -->
+    <div class="mt-12 text-center relative z-10">
+      <p class="text-xs text-neutral-400 flex items-center justify-center gap-2 max-w-lg mx-auto">
+        <Shield class="w-4 h-4 text-accent-lime inline flex-shrink-0" />
+        <span>Atendimento com 100% de sigilo e ética profissional segundo as diretrizes do CFP.</span>
+      </p>
+    </div>
+
+  </div>
+
+</section>

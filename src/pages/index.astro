@@ -1,0 +1,39 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import StatsBar from '../components/StatsBar.astro';
+import PainPoints from '../components/PainPoints.astro';
+import Benefits from '../components/Benefits.astro';
+import AboutBauer from '../components/AboutBauer.astro';
+import Modalities from '../components/Modalities.astro';
+import PodcastInspire from '../components/PodcastInspire.astro';
+import Testimonials from '../components/Testimonials.astro';
+import DirectWhatsAppCTA from '../components/DirectWhatsAppCTA.astro';
+import Faq from '../components/Faq.astro';
+import Footer from '../components/Footer.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
+---
+
+<Layout 
+  title="Bauer Psicólogo | Terapia Presencial na Zape Reequilíbrio (Hamburgo Velho) & Online"
+  description="Mais de 28 anos de prática clínica e +6.000 vidas autorrealizadas. Consultório na Zape Reequilíbrio em Novo Hamburgo e atendimento online para todo o Brasil. Apresentador do Podcast Inspire."
+>
+  <Navbar />
+  
+  <main class="overflow-x-hidden">
+    <Hero />
+    <StatsBar />
+    <PainPoints />
+    <Benefits />
+    <AboutBauer />
+    <Modalities />
+    <PodcastInspire />
+    <Testimonials />
+    <DirectWhatsAppCTA />
+    <Faq />
+  </main>
+
+  <Footer />
+  <WhatsAppButton />
+</Layout>

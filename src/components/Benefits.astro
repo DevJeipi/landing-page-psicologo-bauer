@@ -1,0 +1,81 @@
+---
+import { Check, Compass, SunMedium, Shield, Zap, Sparkles, HeartHandshake, Feather } from 'lucide-astro';
+
+const benefits = [
+  {
+    icon: Compass,
+    title: "Clareza para Decisões Importantes",
+    desc: "Aprenda a silenciar o ruído externo e as opiniões alheias para ouvir com precisão a sua própria bússola interna e tomar decisões com segurança."
+  },
+  {
+    icon: Feather,
+    title: "Desaceleração e Alívio da Ansiedade",
+    desc: "Desenvolva recursos emocionais e práticas de regulação para acalmar o sistema nervoso, diminuindo a angústia e a sensação constante de urgência."
+  },
+  {
+    icon: SunMedium,
+    title: "Autorrealização e Propósito Genuíno",
+    desc: "Mais de 6.000 pessoas guiadas na reconexão com sua identidade autêntica, desbloqueando potencial para viver de acordo com seus valores reais."
+  },
+  {
+    icon: HeartHandshake,
+    title: "Relações Mais Leves e Limites Saudáveis",
+    desc: "Aprenda a expressar sentimentos, colocar limites sem culpa e construir vínculos verdadeiramente equilibrados com família, parceiros e trabalho."
+  },
+  {
+    icon: Zap,
+    title: "Rompimento de Padrões Repetitivos",
+    desc: "Identifique as raízes inconscientes de comportamentos de autossabotagem e construa novas rotinas e respostas emocionais mais saudáveis."
+  },
+  {
+    icon: Shield,
+    title: "Acolhimento Íntimo e 100% Sigiloso",
+    desc: "Um refúgio terapêutico onde você pode ser vulnerável sem medo de julgamentos, amparado por 28 anos de rigor ético e empatia humana."
+  }
+];
+---
+
+<section id="beneficios" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 border-t border-neutral-100">
+  
+  <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+    <div class="space-y-4 max-w-2xl">
+      <div class="inline-flex items-center gap-2 bg-forest-100 text-forest-900 text-xs font-semibold px-3.5 py-1.5 rounded-full uppercase tracking-wider">
+        <Sparkles class="w-3.5 h-3.5 text-forest-700" />
+        <span>Transformação Terapêutica</span>
+      </div>
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight text-forest-950 font-serif leading-tight">
+        O que muda na sua vida ao iniciar o processo terapêutico?
+      </h2>
+    </div>
+    <p class="text-neutral-600 text-base max-w-md">
+      A psicoterapia não é sobre consertos rápidos, mas sobre cultivar uma base interna sólida para viver com equilíbrio, plenitude e serenidade duradouras.
+    </p>
+  </div>
+
+  <!-- Benefits 3x2 Grid -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    {benefits.map((b, i) => {
+      const IconComp = b.icon;
+      return (
+        <div class="bg-white rounded-[2rem] p-8 border border-neutral-200/90 hover:border-forest-400 transition-all duration-300 hover:shadow-card-soft flex flex-col justify-between group">
+          <div>
+            <div class="w-12 h-12 rounded-2xl bg-forest-50 text-forest-800 flex items-center justify-center mb-6 group-hover:bg-forest-900 group-hover:text-accent-lime transition-all duration-300">
+              <IconComp class="w-6 h-6" />
+            </div>
+            <h3 class="text-xl font-semibold text-forest-950 mb-3 group-hover:text-forest-900">
+              {b.title}
+            </h3>
+            <p class="text-neutral-600 text-sm sm:text-base leading-relaxed">
+              {b.desc}
+            </p>
+          </div>
+          <div class="pt-6 mt-6 border-t border-neutral-100 flex items-center gap-2 text-xs font-semibold text-forest-700">
+            <Check class="w-4 h-4 text-accent-leaf" />
+            <span>Pilar de Transformação</span>
+          </div>
+        </div>
+      );
+    })}
+  </div>
+
+</section>

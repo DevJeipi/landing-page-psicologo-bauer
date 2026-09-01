@@ -1,0 +1,67 @@
+---
+import { ChevronDown, HelpCircle, Sparkles } from 'lucide-astro';
+
+const faqs = [
+  {
+    question: "Como funciona a primeira sessão com o Psicólogo Bauer?",
+    answer: "A primeira sessão é um espaço de acolhimento mútuo e escuta atenta. É o momento de você compartilhar suas dores, o que motivou a busca pela terapia e quais são as suas expectativas. O Bauer apresentará como o processo funciona, tirará todas as suas dúvidas e juntos traçarão os primeiros passos do seu reequilíbrio."
+  },
+  {
+    question: "Qual a diferença entre o atendimento presencial e o online?",
+    answer: "Ambas as modalidades têm exatamente a mesma eficácia, profundidade clínica e sigilo profissional. O atendimento presencial é realizado no consultório da clínica Zape Reequilíbrio, em Hamburgo Velho (Novo Hamburgo / RS), proporcionando uma pausa sensorial e imersiva na rotina. O atendimento online é feito por videochamada criptografada (Google Meet ou Zoom), perfeito para quem reside em outras cidades, estados ou no exterior."
+  },
+  {
+    question: "Qual é a duração e a frequência dos encontros?",
+    answer: "Cada sessão individual tem duração de 50 minutos. A frequência recomendada para o início do processo é semanal, garantindo ritmo e continuidade no aprofundamento das questões. Com a evolução do paciente, a frequência pode ser ajustada para quinzenal."
+  },
+  {
+    question: "Como funciona a questão do sigilo profissional?",
+    answer: "O sigilo é absoluto e inegociável. Todas as conversas, relatos e anotações clínicas são estritamente protegidos pelo Código de Ética Profissional do Psicólogo (Conselho Federal de Psicologia - CFP). Você está em um ambiente 100% seguro e confidencial."
+  },
+  {
+    question: "O atendimento aceita convênio ou emite recibo para reembolso?",
+    answer: "Os atendimentos são particulares para garantir a dedicação integral, tempo de escuta adequado e cuidado exclusivo que cada paciente merece. Fornecemos recibo / nota fiscal detalhada para que você possa solicitar reembolso junto ao seu plano de saúde (a maioria dos convênios cobre consultas com psicólogos) e declaração de Imposto de Renda."
+  },
+  {
+    question: "Onde fica localizado o consultório na Zape Reequilíbrio?",
+    answer: "O consultório está situado na clínica Zape Reequilíbrio, no tradicional e arborizado bairro de Hamburgo Velho, em Novo Hamburgo / RS. É um ambiente planejado com muito verde, tranquilidade e facilidade de estacionamento."
+  }
+];
+---
+
+<section id="faq" class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 border-t border-neutral-100">
+  
+  <div class="text-center space-y-4 mb-16">
+    <div class="inline-flex items-center gap-2 bg-sage-100 text-forest-800 text-xs font-semibold px-3.5 py-1.5 rounded-full uppercase tracking-wider">
+      <Sparkles class="w-3.5 h-3.5" />
+      <span>Tire suas Dúvidas</span>
+    </div>
+    
+    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight text-forest-950 font-serif leading-tight">
+      Perguntas Frequentes
+    </h2>
+    
+    <p class="text-base text-neutral-600 max-w-xl mx-auto">
+      Esclareça os principais pontos sobre as sessões, formatos e o processo terapêutico.
+    </p>
+  </div>
+
+  <div class="space-y-4">
+    {faqs.map((faq, index) => (
+      <details class="group bg-neutral-50 hover:bg-forest-50/50 p-6 sm:p-7 rounded-[1.75rem] border border-neutral-200/80 transition-all duration-200 cursor-pointer">
+        <summary class="flex justify-between items-center font-medium list-none text-base sm:text-lg text-forest-950 gap-4">
+          <span class="font-medium group-open:text-forest-800 group-open:font-semibold transition-colors">
+            {faq.question}
+          </span>
+          <div class="w-8 h-8 rounded-full bg-white border border-neutral-200 flex items-center justify-center flex-shrink-0 group-open:bg-forest-900 group-open:text-accent-lime group-open:border-forest-900 transition-all">
+            <ChevronDown class="w-4 h-4 transition-transform duration-300 group-open:rotate-180" />
+          </div>
+        </summary>
+        <p class="text-neutral-600 mt-4 text-sm sm:text-base leading-relaxed border-t border-neutral-200/60 pt-4">
+          {faq.answer}
+        </p>
+      </details>
+    ))}
+  </div>
+
+</section>

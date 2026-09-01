@@ -1,0 +1,95 @@
+---
+import { MapPin, Video, MessageCircle, ShieldCheck } from 'lucide-astro';
+
+const footerWhatsappMsg = encodeURIComponent("Olá, Psicólogo Bauer! Gostaria de mais informações sobre o atendimento psicológico.");
+const footerWhatsappUrl = `https://wa.me/5551999999999?text=${footerWhatsappMsg}`;
+---
+
+<footer class="bg-forest-950 text-white pt-20 pb-12 rounded-t-[3rem] mt-20 border-t border-forest-800/80">
+  <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10">
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 border-b border-forest-800/80 pb-16">
+      
+      <!-- Brand column (Clean typography, no leaf icon) -->
+      <div class="lg:col-span-4 space-y-4">
+        <div class="flex flex-col">
+          <span class="text-2xl font-bold font-serif tracking-tight text-white block">Bauer</span>
+          <span class="text-xs text-accent-lime font-semibold uppercase tracking-widest mt-0.5">Psicólogo Clínico • 28 Anos</span>
+        </div>
+
+        <p class="text-sm text-neutral-400 leading-relaxed max-w-sm">
+          28 anos guiando pessoas na busca por clareza, serenidade e autorrealização. Uma prática acolhedora em sintonia com a natureza.
+        </p>
+
+        <div class="flex items-center gap-3 text-xs text-neutral-400 pt-2">
+          <span class="bg-forest-900 border border-forest-800 px-3 py-1.5 rounded-full text-accent-lime">
+            +6.000 Vidas Atendidas
+          </span>
+          <span class="bg-forest-900 border border-forest-800 px-3 py-1.5 rounded-full text-neutral-300">
+            Podcast Inspire
+          </span>
+        </div>
+      </div>
+
+      <!-- Navigation Column -->
+      <div class="lg:col-span-3 space-y-4">
+        <h4 class="text-sm font-semibold text-white tracking-wider uppercase">Navegação</h4>
+        <ul class="space-y-3 text-sm text-neutral-400">
+          <li><a href="#dores" class="hover:text-accent-lime transition-colors">O que você sente</a></li>
+          <li><a href="#beneficios" class="hover:text-accent-lime transition-colors">Benefícios da Terapia</a></li>
+          <li><a href="#sobre" class="hover:text-accent-lime transition-colors">Sobre o Bauer</a></li>
+          <li><a href="#modalidades" class="hover:text-accent-lime transition-colors">Presencial & Online</a></li>
+          <li><a href="#podcast" class="hover:text-accent-lime transition-colors">Podcast Inspire</a></li>
+          <li><a href="#faq" class="hover:text-accent-lime transition-colors">Dúvidas Frequentes</a></li>
+        </ul>
+      </div>
+
+      <!-- Locations & Contact Column -->
+      <div class="lg:col-span-5 space-y-4">
+        <h4 class="text-sm font-semibold text-white tracking-wider uppercase">Locais de Atendimento</h4>
+        
+        <div class="space-y-3 text-sm text-neutral-300">
+          <div class="flex items-start gap-2.5 bg-forest-900/60 p-3.5 rounded-2xl border border-forest-800">
+            <MapPin class="w-5 h-5 text-accent-lime flex-shrink-0 mt-0.5" />
+            <div>
+              <p class="font-semibold text-white">Consultório Presencial:</p>
+              <p class="text-xs text-neutral-400 mt-0.5">Clínica Zape Reequilíbrio • Hamburgo Velho, Novo Hamburgo / RS</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-2.5 bg-forest-900/60 p-3.5 rounded-2xl border border-forest-800">
+            <Video class="w-5 h-5 text-accent-lime flex-shrink-0 mt-0.5" />
+            <div>
+              <p class="font-semibold text-white">Consultório Online:</p>
+              <p class="text-xs text-neutral-400 mt-0.5">Atendimento individual para todo o Brasil e brasileiros no exterior</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="pt-2">
+          <a 
+            href={footerWhatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 bg-accent-lime hover:bg-accent-lime-hover text-forest-950 text-xs font-bold px-5 py-3 rounded-xl transition-colors"
+          >
+            <MessageCircle class="w-4 h-4 text-forest-950" />
+            <span>Falar no WhatsApp</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom Disclaimer & Copyright -->
+    <div class="pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-neutral-400">
+      <p>© {new Date().getFullYear()} Bauer Psicólogo Clínico. Todos os direitos reservados.</p>
+      
+      <p class="text-center md:text-right max-w-xl text-[11px] text-neutral-500 leading-relaxed">
+        Atendimento pautado no Código de Ética Profissional do Psicólogo (CFP). <br/>
+        Em casos de urgência emocional grave, ligue <strong>188 (CVV - Centro de Valorização da Vida)</strong>.
+      </p>
+    </div>
+
+  </div>
+</footer>

@@ -1,0 +1,226 @@
+---
+import {
+  MessageCircle,
+  ShieldCheck,
+  MapPin,
+  Video,
+  Star,
+  Mic,
+  Play,
+  ArrowRight,
+  Sparkles,
+} from "lucide-astro";
+
+const heroWhatsappMsg = encodeURIComponent(
+  "Olá, Psicólogo Bauer! Gostaria de agendar uma primeira sessão de psicoterapia.",
+);
+const heroWhatsappUrl = `https://wa.me/5551999999999?text=${heroWhatsappMsg}`;
+---
+
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-12">
+  <!-- Hero Card Container -->
+  <div
+    class="relative bg-gradient-to-br from-forest-950 via-forest-900 to-forest-850 text-white rounded-[2.5rem] p-6 sm:p-10 md:p-14 lg:p-16 overflow-hidden shadow-glow-forest border border-forest-800/60"
+  >
+    <!-- Ambient Background Glows -->
+    <div
+      class="absolute -top-32 -right-32 w-96 h-96 bg-accent-lime/10 rounded-full blur-3xl pointer-events-none"
+    >
+    </div>
+    <div
+      class="absolute -bottom-32 -left-32 w-96 h-96 bg-sage-500/10 rounded-full blur-3xl pointer-events-none"
+    >
+    </div>
+
+    <div
+      class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10"
+    >
+      <!-- Left Column: Copywriting & CTAs -->
+      <div class="lg:col-span-7 space-y-7">
+        <!-- Authority Pill Badge -->
+        <div
+          class="inline-flex items-center gap-2.5 bg-forest-800/80 border border-forest-700/80 px-4 py-2 rounded-full text-xs sm:text-sm text-accent-lime shadow-inner backdrop-blur-sm"
+        >
+          <span class="flex h-2 w-2 relative">
+            <span
+              class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-lime opacity-75"
+            ></span>
+            <span
+              class="relative inline-flex rounded-full h-2 w-2 bg-accent-lime"
+            ></span>
+          </span>
+          <span class="font-medium tracking-wide"
+            >28 Anos de Prática Clínica • +6.000 Mentes Autorrealizadas</span
+          >
+        </div>
+
+        <!-- Main Headline with Garamond Serif & Inter -->
+        <div class="space-y-4">
+          <h1
+            class="text-3xl sm:text-5xl xl:text-6xl font-medium tracking-tight leading-[1.12] text-white"
+          >
+            Reencontre a sua <br />
+            <span
+              class="font-serif italic font-normal text-accent-lime underline decoration-accent-lime/30 decoration-wavy decoration-1 underline-offset-8"
+              >paz interior</span
+            > e a clareza para viver com leveza.
+          </h1>
+          <p
+            class="text-base sm:text-lg text-neutral-300 font-normal leading-relaxed max-w-xl"
+          >
+            Acompanhamento psicológico profundo e humanizado com o <strong
+              >Psicólogo Bauer</strong
+            >. Um espaço seguro para desatar nós emocionais, desacelerar a mente
+            e reencontrar sua autorrealização.
+          </p>
+        </div>
+
+        <!-- Action Buttons -->
+        <div
+          class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2"
+        >
+          <a
+            href={heroWhatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="bg-accent-lime hover:bg-accent-lime-hover text-forest-950 text-base font-semibold px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-3 shadow-glow-lime group"
+          >
+            <MessageCircle class="w-5 h-5 text-forest-900" />
+            <span>Agendar Primeira Sessão</span>
+            <ArrowRight
+              class="w-4 h-4 transition-transform group-hover:translate-x-1"
+            />
+          </a>
+
+          <a
+            href="#sobre"
+            class="bg-white/10 hover:bg-white/15 text-white border border-white/20 text-base font-medium px-6 py-4 rounded-full transition-all duration-200 backdrop-blur-sm flex items-center justify-center gap-2 hover:border-white/40"
+          >
+            <span>Conhecer o Bauer</span>
+          </a>
+        </div>
+
+        <!-- Social Proof Micro Indicators -->
+        <div
+          class="pt-4 border-t border-forest-800/80 flex flex-wrap items-center gap-y-3 gap-x-6 text-xs text-neutral-300"
+        >
+          <div class="flex items-center gap-1.5">
+            <div class="flex text-amber-400">
+              <Star class="w-4 h-4 fill-amber-400" />
+              <Star class="w-4 h-4 fill-amber-400" />
+              <Star class="w-4 h-4 fill-amber-400" />
+              <Star class="w-4 h-4 fill-amber-400" />
+              <Star class="w-4 h-4 fill-amber-400" />
+            </div>
+            <span class="font-semibold text-white">5.0</span>
+            <span class="text-neutral-400">(Avaliações)</span>
+          </div>
+
+          <div class="flex items-center gap-1.5 text-neutral-300">
+            <ShieldCheck class="w-4 h-4 text-accent-lime" />
+            <span>100% Sigilo Ético (CFP)</span>
+          </div>
+
+          <div class="flex items-center gap-1.5 text-neutral-300">
+            <MapPin class="w-4 h-4 text-accent-lime" />
+            <span>Presencial em Hamburgo Velho & Online</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Visual Card with Real Photo of Bauer -->
+      <div class="lg:col-span-5 flex justify-center">
+        <div class="relative w-full max-w-[390px]">
+          <!-- Background Ambient Tilt Card -->
+          <div
+            class="absolute -top-3 -left-3 w-full h-full bg-forest-800/40 rounded-[2.5rem] border border-forest-700/50 transform -rotate-2 -z-10 hidden sm:block"
+          >
+          </div>
+
+          <!-- Main Floating Profile Card -->
+          <div
+            class="bg-forest-950/90 backdrop-blur-xl rounded-[2.5rem] p-5 sm:p-6 border border-forest-700/80 shadow-2xl space-y-5"
+          >
+            <!-- Real Photo of Bauer Container -->
+            <div
+              class="relative rounded-3xl overflow-hidden aspect-[4/3] bg-forest-900 border border-forest-800"
+            >
+              <img
+                src="/bauer-foto-1.avif"
+                alt="Psicólogo Bauer em seu espaço de atendimento"
+                class="w-full h-full object-cover object-center"
+                loading="eager"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-forest-950 via-transparent to-transparent opacity-80"
+              >
+              </div>
+
+              <!-- Floating Pill on Top of Photo -->
+              <div
+                class="absolute bottom-3 left-3 right-3 flex items-center justify-between"
+              >
+                <span
+                  class="bg-forest-950/90 backdrop-blur-md text-white text-xs font-semibold px-3 py-1.5 rounded-full border border-forest-700"
+                >
+                  Psicólogo Bauer
+                </span>
+                <span
+                  class="bg-accent-lime text-forest-950 text-[11px] font-bold px-2.5 py-1 rounded-full"
+                >
+                  28 Anos Exp.
+                </span>
+              </div>
+            </div>
+
+            <!-- Locations Fast Cards -->
+            <div class="space-y-2">
+              <div
+                class="bg-forest-900/90 rounded-2xl p-3 border border-forest-800 flex items-center gap-3"
+              >
+                <div class="bg-forest-800 text-accent-lime p-2 rounded-xl">
+                  <MapPin class="w-4 h-4" />
+                </div>
+                <div>
+                  <p class="text-xs font-semibold text-white leading-tight">
+                    Presencial na Zape Reequilíbrio
+                  </p>
+                  <p class="text-[11px] text-neutral-400">
+                    Hamburgo Velho • Novo Hamburgo / RS
+                  </p>
+                </div>
+              </div>
+
+              <div
+                class="bg-forest-900/90 rounded-2xl p-3 border border-forest-800 flex items-center gap-3"
+              >
+                <div class="bg-forest-800 text-accent-lime p-2 rounded-xl">
+                  <Video class="w-4 h-4" />
+                </div>
+                <div>
+                  <p class="text-xs font-semibold text-white leading-tight">
+                    Atendimento Online Global
+                  </p>
+                  <p class="text-[11px] text-neutral-400">
+                    Todo o Brasil e exterior com sigilo total
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Quick WhatsApp Button -->
+            <a
+              href={heroWhatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-full bg-white hover:bg-neutral-100 text-forest-950 text-sm font-semibold py-3.5 px-4 rounded-2xl text-center flex items-center justify-center gap-2 transition-all shadow-md"
+            >
+              <MessageCircle class="w-4 h-4 text-emerald-700" />
+              <span>Consultar Horários Disponíveis</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
