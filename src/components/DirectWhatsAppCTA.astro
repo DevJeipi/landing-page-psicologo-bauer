@@ -1,15 +1,10 @@
 ---
-import { MessageCircle, MapPin, Video, HelpCircle, Shield, Sparkles, ArrowRight } from 'lucide-astro';
+import { MessageCircle, MapPin, Video, HelpCircle, Shield, Sparkles } from 'lucide-astro';
+import { whatsappUrl } from '../data/site';
 
-// Contextual WhatsApp URLs
-const presencialMsg = encodeURIComponent("Olá, Bauer! Gostaria de agendar uma consulta *presencial* no consultório da *Zape Reequilíbrio* em Hamburgo Velho. Como podemos verificar os próximos horários?");
-const presencialUrl = `https://wa.me/5551999999999?text=${presencialMsg}`;
-
-const onlineMsg = encodeURIComponent("Olá, Bauer! Gostaria de saber mais e agendar uma sessão de *terapia online*. Poderia me passar as informações e próximos horários disponíveis?");
-const onlineUrl = `https://wa.me/5551999999999?text=${onlineMsg}`;
-
-const generalMsg = encodeURIComponent("Olá, Bauer! Conheci seu trabalho e gostaria de tirar algumas dúvidas sobre como funciona o processo terapêutico antes de agendar.");
-const generalUrl = `https://wa.me/5551999999999?text=${generalMsg}`;
+const presencialUrl = whatsappUrl("Olá, Bauer! Gostaria de agendar uma consulta presencial no consultório da Zape Reequilíbrio em Novo Hamburgo. Como podemos verificar os próximos horários?");
+const onlineUrl = whatsappUrl("Olá, Bauer! Gostaria de saber mais e agendar uma sessão de terapia online. Poderia me passar as informações e próximos horários disponíveis?");
+const generalUrl = whatsappUrl("Olá, Bauer! Conheci seu trabalho e gostaria de tirar algumas dúvidas sobre como funciona o processo terapêutico antes de agendar.");
 ---
 
 <section id="agendamento" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
@@ -46,7 +41,7 @@ const generalUrl = `https://wa.me/5551999999999?text=${generalMsg}`;
           </div>
           <div>
             <h3 class="text-xl font-bold font-serif text-white">Atendimento Presencial</h3>
-            <p class="text-xs text-accent-lime font-medium mt-1">Zape Reequilíbrio • Hamburgo Velho</p>
+            <p class="text-xs text-accent-lime font-medium mt-1">Zape Reequilíbrio • Novo Hamburgo</p>
           </div>
           <p class="text-xs sm:text-sm text-neutral-300 leading-relaxed">
             Para quem busca a experiência presencial e imersiva em um refúgio acolhedor no Rio Grande do Sul.

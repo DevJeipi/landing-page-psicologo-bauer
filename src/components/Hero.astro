@@ -5,16 +5,13 @@ import {
   MapPin,
   Video,
   Star,
-  Mic,
-  Play,
   ArrowRight,
-  Sparkles,
 } from "lucide-astro";
+import { whatsappUrl } from "../data/site";
 
-const heroWhatsappMsg = encodeURIComponent(
+const heroWhatsappUrl = whatsappUrl(
   "Olá, Psicólogo Bauer! Gostaria de agendar uma primeira sessão de psicoterapia.",
 );
-const heroWhatsappUrl = `https://wa.me/5551999999999?text=${heroWhatsappMsg}`;
 ---
 
 <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-12">
@@ -50,7 +47,7 @@ const heroWhatsappUrl = `https://wa.me/5551999999999?text=${heroWhatsappMsg}`;
             ></span>
           </span>
           <span class="font-medium tracking-wide"
-            >28 Anos de Prática Clínica • +6.000 Mentes Autorrealizadas</span
+            >Prática Clínica Desde 1988 • +8.000 Mentes Autorrealizadas</span
           >
         </div>
 
@@ -123,7 +120,7 @@ const heroWhatsappUrl = `https://wa.me/5551999999999?text=${heroWhatsappMsg}`;
 
           <div class="flex items-center gap-1.5 text-neutral-300">
             <MapPin class="w-4 h-4 text-accent-lime" />
-            <span>Presencial em Hamburgo Velho & Online</span>
+            <span>Presencial em Novo Hamburgo (Zape) & Online</span>
           </div>
         </div>
       </div>
@@ -147,9 +144,12 @@ const heroWhatsappUrl = `https://wa.me/5551999999999?text=${heroWhatsappMsg}`;
             >
               <img
                 src="/bauer-foto-1.avif"
-                alt="Psicólogo Bauer em seu espaço de atendimento"
+                alt="Psicólogo Bauer, psicólogo clínico em Novo Hamburgo, em seu espaço de atendimento"
                 class="w-full h-full object-cover object-center"
-                loading="eager"
+                width="780"
+                height="585"
+                fetchpriority="high"
+                decoding="async"
               />
               <div
                 class="absolute inset-0 bg-gradient-to-t from-forest-950 via-transparent to-transparent opacity-80"
@@ -168,7 +168,7 @@ const heroWhatsappUrl = `https://wa.me/5551999999999?text=${heroWhatsappMsg}`;
                 <span
                   class="bg-accent-lime text-forest-950 text-[11px] font-bold px-2.5 py-1 rounded-full"
                 >
-                  28 Anos Exp.
+                  Desde 1988
                 </span>
               </div>
             </div>
@@ -186,7 +186,7 @@ const heroWhatsappUrl = `https://wa.me/5551999999999?text=${heroWhatsappMsg}`;
                     Presencial na Zape Reequilíbrio
                   </p>
                   <p class="text-[11px] text-neutral-400">
-                    Hamburgo Velho • Novo Hamburgo / RS
+                    Zape Reequilíbrio • Novo Hamburgo / RS
                   </p>
                 </div>
               </div>

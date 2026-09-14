@@ -1,5 +1,5 @@
 ---
-import { Brain, BatteryCharging, Compass, HeartCrack, HelpCircle, ArrowDown, Sparkles } from 'lucide-astro';
+import { Brain, BatteryCharging, Compass, HeartCrack, Sparkles } from 'lucide-astro';
 
 const pains = [
   {
@@ -43,13 +43,13 @@ const pains = [
     </h2>
     
     <p class="text-base sm:text-lg text-neutral-600 font-normal leading-relaxed">
-      A maioria das pessoas que chegam ao consultório do Bauer acreditava que precisava "aguentar firme" sozinha. Mas a exaustão emocional não é fraqueza — é um sinal de que algo essencial precisa de escuta e cuidado.
+      A maioria das pessoas que chegam ao consultório do Bauer acreditava que precisava "aguentar firme" sozinha. Mas a exaustão emocional não é fraqueza: é um sinal de que algo essencial precisa de escuta e cuidado.
     </p>
   </div>
 
   <!-- Pain Points Grid -->
   <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-    {pains.map((item, index) => {
+    {pains.map((item) => {
       const IconComponent = item.icon;
       return (
         <div class="bg-neutral-50/90 hover:bg-white rounded-[2rem] p-8 border border-neutral-200/80 hover:border-forest-200 transition-all duration-300 hover:shadow-card-soft group relative overflow-hidden">

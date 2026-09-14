@@ -1,8 +1,8 @@
 ---
 import { MessageCircle } from 'lucide-astro';
+import { whatsappUrl } from '../data/site';
 
-const defaultMessage = encodeURIComponent("Olá, Psicólogo Bauer! Gostaria de tirar algumas dúvidas e saber sobre horários disponíveis para atendimento.");
-const whatsappUrl = `https://wa.me/5551999999999?text=${defaultMessage}`;
+const whatsappUrlHref = whatsappUrl("Olá, Psicólogo Bauer! Gostaria de tirar algumas dúvidas e saber sobre horários disponíveis para atendimento.");
 ---
 
 <div class="fixed bottom-6 right-6 z-50 flex items-center gap-3">

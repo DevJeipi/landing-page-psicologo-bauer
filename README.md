@@ -1,6 +1,6 @@
 # 🌿 Psicólogo Bauer — Landing Page de Alta Conversão
 
-Landing page profissional, de alta performance e conversão desenvolvida para o **Psicólogo Bauer** (28 anos de experiência clínica, +6.000 mentes autorrealizadas, consultório na *Zape Reequilíbrio* em Hamburgo Velho / RS, atendimento online global e apresentador do podcast *Inspire*).
+Landing page profissional, de alta performance e conversão desenvolvida para o **Psicólogo Bauer** (atuação clínica desde 1988, +8.000 mentes autorrealizadas, consultório na *Zape Reequilíbrio* em Novo Hamburgo / RS, atendimento online global e apresentador do podcast *Inspire com Psicólogo Bauer* no YouTube).
 
 Construída com **Astro**, **Tailwind CSS** e **Lucide Icons**.
 
@@ -15,10 +15,12 @@ Construída com **Astro**, **Tailwind CSS** e **Lucide Icons**.
   - Componentes modulares com cantos arredondados generosos (`rounded-[2.5rem]`, `rounded-3xl`).
 - **💬 Conversão Direta via WhatsApp Contextual**:
   - Links com mensagens personalizadas para cada intenção:
-    - *Presencial na Zape Reequilíbrio (Hamburgo Velho)*
+    - *Presencial na Zape Reequilíbrio (Novo Hamburgo)*
     - *Atendimento Online (Brasil e Exterior)*
     - *Dúvidas e Orientações Gerais*
-    - *Ouvintes do Podcast Inspire*
+    - *Espectadores do Inspire com Psicólogo Bauer no YouTube*
+- **🎥 Depoimentos Reais em Vídeo**:
+  - Vídeos reais de pacientes com carregamento estritamente sob demanda (sob clique do visitante), sem consumo desnecessário de dados ou impacto na velocidade da página.
 - **📱 100% Responsivo & Acessível**: Experiência fluida em mobile, tablet e desktop.
 - **🔒 Conformidade Ética**: Alinhado às diretrizes do Código de Ética Profissional do Psicólogo (CFP).
 
@@ -42,18 +44,19 @@ psicologo-bauer/
 ├── public/
 │   ├── bauer-foto-1.avif     # Foto principal do Hero
 │   ├── bauer-foto-2.avif     # Foto da seção Sobre
-│   └── favicon.svg           # Favicon botânico
+│   ├── favicon.svg           # Favicon botânico
+│   └── videos/               # Vídeos de depoimento reais
 ├── src/
 │   ├── components/
 │   │   ├── Navbar.astro              # Cabeçalho sticky com blur e CTA direto
 │   │   ├── Hero.astro                # Hero com proposta de valor e foto em destaque
-│   │   ├── StatsBar.astro            # Faixa de autoridade (28 anos, +6k mentes)
+│   │   ├── StatsBar.astro            # Faixa de autoridade (Desde 1988, +8k mentes)
 │   │   ├── PainPoints.astro          # Seção de empatia e reflexão sobre dores
 │   │   ├── Benefits.astro            # 6 pilares de transformação da terapia
 │   │   ├── AboutBauer.astro          # Biografia, filosofia e fotos do especialista
 │   │   ├── Modalities.astro          # Presencial (Zape) vs. Online Global
-│   │   ├── PodcastInspire.astro      # Showcase de episódios do podcast Inspire
-│   │   ├── Testimonials.astro        # Depoimentos anônimos éticos (sigilo CFP)
+│   │   ├── PodcastInspire.astro      # Episódios do Inspire com Psicólogo Bauer
+│   │   ├── Testimonials.astro        # Depoimentos reais em vídeo sob demanda
 │   │   ├── DirectWhatsAppCTA.astro   # Seção de ação rápida com CTAs contextuais
 │   │   ├── Faq.astro                 # Accordion de perguntas frequentes
 │   │   ├── Footer.astro              # Rodapé com dados institucionais e aviso ético

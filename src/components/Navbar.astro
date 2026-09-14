@@ -1,99 +1,68 @@
 ---
-import { MessageCircle, Menu, X, ArrowRight } from 'lucide-astro';
+import { MessageCircle, Menu, X } from 'lucide-astro';
+import { whatsappUrl } from '../data/site';
 
-const headerWhatsappMsg = encodeURIComponent("Olá, Psicólogo Bauer! Gostaria de agendar uma primeira sessão de psicoterapia.");
-const headerWhatsappUrl = `https://wa.me/5551999999999?text=${headerWhatsappMsg}`;
+const headerWhatsappUrl = whatsappUrl("Olá, Psicólogo Bauer! Gostaria de agendar uma primeira sessão de psicoterapia.");
+
+const navLinks = [
+  { href: "#sobre", label: "Sobre" },
+  { href: "#modalidades", label: "Atendimentos" },
+  { href: "#podcast", label: "Podcast" },
+  { href: "#depoimentos", label: "Depoimentos" },
+  { href: "#faq", label: "Dúvidas" },
+];
 ---
 
-<header class="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-neutral-100 shadow-sm transition-all duration-300">
+<header class="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-neutral-100">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center justify-between h-20">
-      
-      <!-- Brand Logo (Pure Typography without leaf icon) -->
-      <a href="#" class="flex items-center gap-2 group text-left">
-        <div class="flex flex-col">
-          <span class="text-2xl sm:text-3xl font-bold font-serif tracking-tight text-forest-950 leading-none group-hover:text-forest-800 transition-colors">
-            Bauer
-          </span>
-          <span class="text-xs sm:text-sm font-semibold tracking-widest text-forest-700 uppercase mt-0.5">
-            Psicólogo Clínico
-          </span>
-        </div>
+    <div class="grid grid-cols-[1fr_auto] lg:grid-cols-[auto_1fr_auto] items-center h-16 gap-4">
+      <a href="/" class="flex items-baseline gap-2 min-w-0 justify-self-start">
+        <span class="text-2xl font-bold font-serif tracking-tight text-forest-950 leading-none">
+          Bauer
+        </span>
+        <span class="text-[11px] font-medium tracking-wide text-forest-700 uppercase whitespace-nowrap">
+          Psicólogo
+        </span>
       </a>
 
-      <!-- Desktop Navigation -->
-      <nav class="hidden lg:flex items-center gap-8 text-sm font-medium text-neutral-600">
-        <a class="hover:text-forest-900 transition-colors" href="#dores">O que você sente</a>
-        <a class="hover:text-forest-900 transition-colors" href="#beneficios">Benefícios</a>
-        <a class="hover:text-forest-900 transition-colors" href="#sobre">Sobre</a>
-        <a class="hover:text-forest-900 transition-colors" href="#modalidades">Atendimentos</a>
-        <a class="hover:text-forest-900 transition-colors" href="#podcast">Podcast Inspire</a>
-        <a class="hover:text-forest-900 transition-colors" href="#depoimentos">Depoimentos</a>
-        <a class="hover:text-forest-900 transition-colors" href="#faq">Dúvidas</a>
+      <nav class="hidden lg:flex items-center justify-center gap-6 text-sm font-medium text-neutral-600 whitespace-nowrap" aria-label="Principal">
+        {navLinks.map((link) => (
+          <a class="hover:text-forest-900 transition-colors" href={link.href}>{link.label}</a>
+        ))}
       </nav>
 
-      <!-- Desktop WhatsApp Action Button -->
-      <div class="hidden sm:flex items-center gap-3">
-        <a 
+      <div class="flex items-center justify-end gap-2">
+        <a
           href={headerWhatsappUrl}
           target="_blank"
           rel="noopener noreferrer"
-          class="bg-forest-900 hover:bg-forest-800 text-white text-sm font-medium px-5 py-3 rounded-full transition-all duration-200 shadow-sm hover:shadow flex items-center gap-2 group"
+          class="bg-forest-900 hover:bg-forest-800 text-white text-sm font-medium px-4 py-2 rounded-full transition-colors flex items-center gap-2 whitespace-nowrap"
         >
-          <MessageCircle class="w-4 h-4 text-accent-lime" />
-          <span>Falar no WhatsApp</span>
-          <ArrowRight class="w-3.5 h-3.5 text-accent-lime transition-transform group-hover:translate-x-0.5" />
+          <MessageCircle class="w-4 h-4 text-accent-lime shrink-0" />
+          <span class="hidden sm:inline">WhatsApp</span>
         </a>
-      </div>
 
-      <!-- Mobile Menu Toggle Button -->
-      <div class="lg:hidden flex items-center gap-2">
-        <a 
-          href={headerWhatsappUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="sm:hidden bg-forest-900 text-white text-xs font-medium px-3.5 py-2 rounded-full flex items-center gap-1.5"
-        >
-          <MessageCircle class="w-3.5 h-3.5 text-accent-lime" />
-          <span>WhatsApp</span>
-        </a>
-        <button 
-          id="mobile-menu-btn" 
-          type="button" 
-          aria-label="Abrir Menu de Navegação"
-          class="p-2 rounded-xl text-neutral-800 hover:bg-neutral-100 focus:outline-none"
+        <button
+          id="mobile-menu-btn"
+          type="button"
+          aria-label="Abrir menu de navegação"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+          class="lg:hidden p-2 rounded-xl text-neutral-800 hover:bg-neutral-100"
         >
           <Menu id="menu-icon-open" class="w-6 h-6 block" />
           <X id="menu-icon-close" class="w-6 h-6 hidden" />
         </button>
       </div>
-
     </div>
   </div>
 
-  <!-- Mobile Drawer Menu -->
-  <div id="mobile-menu" class="hidden lg:hidden bg-white border-b border-neutral-200 px-6 py-6 transition-all">
-    <div class="flex flex-col space-y-4 text-base font-medium text-neutral-700">
-      <a class="mobile-link py-2 hover:text-forest-900 border-b border-neutral-100" href="#dores">O que você sente</a>
-      <a class="mobile-link py-2 hover:text-forest-900 border-b border-neutral-100" href="#beneficios">Benefícios da Terapia</a>
-      <a class="mobile-link py-2 hover:text-forest-900 border-b border-neutral-100" href="#sobre">Sobre o Bauer</a>
-      <a class="mobile-link py-2 hover:text-forest-900 border-b border-neutral-100" href="#modalidades">Presencial (Zape) & Online</a>
-      <a class="mobile-link py-2 hover:text-forest-900 border-b border-neutral-100" href="#podcast">Podcast Inspire</a>
-      <a class="mobile-link py-2 hover:text-forest-900 border-b border-neutral-100" href="#depoimentos">Depoimentos</a>
-      <a class="mobile-link py-2 hover:text-forest-900 border-b border-neutral-100" href="#faq">Dúvidas Frequentes</a>
-      
-      <div class="pt-2">
-        <a 
-          href={headerWhatsappUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="mobile-link w-full bg-forest-900 text-white text-center py-3.5 rounded-2xl font-medium flex items-center justify-center gap-2 shadow-md"
-        >
-          <MessageCircle class="w-4 h-4 text-accent-lime" />
-          <span>Falar Diretamente no WhatsApp</span>
-        </a>
-      </div>
-    </div>
+  <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-neutral-100 px-6 py-5">
+    <nav class="flex flex-col gap-1 text-base font-medium text-neutral-700" aria-label="Menu mobile">
+      {navLinks.map((link) => (
+        <a class="mobile-link py-2.5 hover:text-forest-900" href={link.href}>{link.label}</a>
+      ))}
+    </nav>
   </div>
 </header>
 
@@ -104,24 +73,19 @@ const headerWhatsappUrl = `https://wa.me/5551999999999?text=${headerWhatsappMsg}
   const closeIcon = document.getElementById('menu-icon-close');
   const mobileLinks = document.querySelectorAll('.mobile-link');
 
+  const setOpen = (open: boolean) => {
+    menu?.classList.toggle('hidden', !open);
+    openIcon?.classList.toggle('hidden', open);
+    closeIcon?.classList.toggle('hidden', !open);
+    btn?.setAttribute('aria-expanded', String(open));
+    btn?.setAttribute('aria-label', open ? 'Fechar menu de navegação' : 'Abrir menu de navegação');
+  };
+
   btn?.addEventListener('click', () => {
-    const isHidden = menu?.classList.contains('hidden');
-    if (isHidden) {
-      menu?.classList.remove('hidden');
-      openIcon?.classList.add('hidden');
-      closeIcon?.classList.remove('hidden');
-    } else {
-      menu?.classList.add('hidden');
-      openIcon?.classList.remove('hidden');
-      closeIcon?.classList.add('hidden');
-    }
+    setOpen(menu?.classList.contains('hidden') ?? false);
   });
 
   mobileLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      menu?.classList.add('hidden');
-      openIcon?.classList.remove('hidden');
-      closeIcon?.classList.add('hidden');
-    });
+    link.addEventListener('click', () => setOpen(false));
   });
 </script>

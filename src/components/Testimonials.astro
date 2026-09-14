@@ -1,34 +1,33 @@
 ---
-import { Star, Quote, ShieldCheck, Sparkles, CheckCircle2 } from 'lucide-astro';
+import { Play, ShieldCheck, Sparkles, MessageCircle, Star } from 'lucide-astro';
+import { whatsappUrl } from '../data/site';
 
-const testimonials = [
+const testimonialsWhatsappUrl = whatsappUrl("Olá, Bauer! Assisti aos depoimentos em vídeo dos seus pacientes no site e gostaria de agendar uma consulta.");
+
+const videoTestimonials = [
   {
-    initials: "M. R.",
-    age: "42 anos",
-    modality: "Presencial na Zape Reequilíbrio",
-    text: "Cheguei ao consultório do Bauer à beira do burnout, sem conseguir dormir e com a sensação de carregar o mundo nas costas. A calma e a precisão da escuta dele ao longo das sessões me devolveram a clareza e a serenidade. Hoje vivo com muito mais presença e limite.",
-    theme: "Superação do Burnout & Ansiedade"
+    id: "video-1",
+    title: "Depoimento de paciente",
+    theme: "Superação da Ansiedade e Clareza Emocional",
+    videoSrc: "/videos/DEPOIMENTO%201.mp4",
+    posterSrc: "/videos/poster-depoimento-1.webp",
+    description: "Relato espontâneo sobre como o processo terapêutico com o Bauer trouxe paz interior e uma nova perspectiva de vida."
   },
   {
-    initials: "F. A.",
-    age: "36 anos",
-    modality: "Atendimento Online (São Paulo)",
-    text: "Eu tinha certo receio de fazer terapia online, mas a conexão e a profundidade foram imediatas. O Bauer tem uma sensibilidade rara e uma bagagem de 28 anos que faz cada sessão ser transformadora. Encontrei um novo sentido para a minha carreira e vida pessoal.",
-    theme: "Clareza & Autorrealização"
+    id: "video-2",
+    title: "Depoimento de paciente",
+    theme: "Autoconhecimento e Desaceleração",
+    videoSrc: "/videos/DEPOIMENTO%202.mp4",
+    posterSrc: "/videos/poster-depoimento-2.webp",
+    description: "Experiência de acolhimento sem julgamentos e as transformações vividas ao longo dos encontros com o psicólogo."
   },
   {
-    initials: "C. S.",
-    age: "29 anos",
-    modality: "Presencial na Zape Reequilíbrio",
-    text: "O ambiente da Zape em Hamburgo Velho já transmite uma paz indescritível antes mesmo da sessão começar. O processo terapêutico com o Bauer me ensinou a acolher minhas emoções sem me desesperar e a dizer não sem culpa. Sou imensamente grata.",
-    theme: "Autoconhecimento & Limites Saudáveis"
-  },
-  {
-    initials: "E. T.",
-    age: "51 anos",
-    modality: "Atendimento Online (Lisboa / Portugal)",
-    text: "Mesmo morando fora do Brasil, manter as sessões online com o Bauer é o momento mais importante da minha semana. Ele é um profissional excepcional, sereno, profundamente ético e assertivo. Mudou a forma como encaro os conflitos.",
-    theme: "Equilíbrio & Maturidade Emocional"
+    id: "video-roberto",
+    title: "Depoimento de Roberto",
+    theme: "Transformação e Reequilíbrio Pessoal",
+    videoSrc: "/videos/DEPOIMENTO%20ROBERTO.mp4",
+    posterSrc: "/videos/poster-depoimento-roberto.webp",
+    description: "Compartilhamento sincero de Roberto sobre o impacto do acompanhamento com o Bauer em sua trajetória e bem-estar."
   }
 ];
 ---
@@ -38,57 +37,79 @@ const testimonials = [
   <div class="max-w-3xl mx-auto text-center space-y-4 mb-16">
     <div class="inline-flex items-center gap-2 bg-forest-100 text-forest-900 text-xs font-semibold px-3.5 py-1.5 rounded-full uppercase tracking-wider">
       <Sparkles class="w-3.5 h-3.5 text-forest-700" />
-      <span>Histórias de Reequilíbrio</span>
+      <span>Histórias Reais de Transformação</span>
     </div>
     
     <h2 class="text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight text-forest-950 font-serif leading-tight">
-      Relatos anônimos de quem reencontrou a calma e a direção
+      Depoimentos em Vídeo de quem vivenciou o processo
     </h2>
     
     <p class="text-base sm:text-lg text-neutral-600 font-normal leading-relaxed">
-      A confidencialidade é sagrada. Conheça a transformação de pacientes que encontraram no processo terapêutico um porto seguro para florescer.
+      Veja relatos reais e espontâneos de pacientes sobre o impacto do acompanhamento terapêutico com o Psicólogo Bauer. Clique no vídeo para assistir.
     </p>
   </div>
 
-  <!-- Testimonials Grid -->
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-    {testimonials.map((t) => (
-      <div class="bg-neutral-50 hover:bg-white rounded-[2rem] p-8 sm:p-9 border border-neutral-200/80 hover:border-forest-300 transition-all duration-300 hover:shadow-card-soft flex flex-col justify-between group">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    {videoTestimonials.map((item) => (
+      <div class="bg-forest-950 text-white rounded-[2.5rem] overflow-hidden border border-forest-800 shadow-xl flex flex-col justify-between group hover:border-forest-600 transition-all duration-300">
         
-        <div class="space-y-6">
-          <div class="flex items-center justify-between">
-            <div class="flex text-amber-400">
-              <Star class="w-4 h-4 fill-amber-400" />
-              <Star class="w-4 h-4 fill-amber-400" />
-              <Star class="w-4 h-4 fill-amber-400" />
-              <Star class="w-4 h-4 fill-amber-400" />
-              <Star class="w-4 h-4 fill-amber-400" />
+        <div class="relative w-full aspect-[9/14] sm:aspect-[9/15] bg-neutral-900 overflow-hidden" id={`container-${item.id}`}>
+          
+          <button
+            type="button"
+            class="video-trigger absolute inset-0 cursor-pointer flex flex-col justify-between p-5 z-10 text-left"
+            data-target={`container-${item.id}`}
+            data-src={item.videoSrc}
+            aria-label={`Assistir ${item.title}`}
+          >
+            <img 
+              src={item.posterSrc} 
+              alt={`Capa do ${item.title} sobre ${item.theme}`} 
+              class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-80"
+              width="720"
+              height="1120"
+              loading="lazy"
+              decoding="async"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-forest-950 via-forest-950/30 to-black/40"></div>
+
+            <div class="relative z-10 flex items-center justify-between">
+              <span class="bg-forest-900/90 text-accent-lime text-[11px] font-semibold px-3 py-1 rounded-full border border-forest-700/80 backdrop-blur-sm">
+                Vídeo Relato
+              </span>
+              <div class="flex text-amber-400">
+                <Star class="w-3.5 h-3.5 fill-amber-400" />
+                <Star class="w-3.5 h-3.5 fill-amber-400" />
+                <Star class="w-3.5 h-3.5 fill-amber-400" />
+                <Star class="w-3.5 h-3.5 fill-amber-400" />
+                <Star class="w-3.5 h-3.5 fill-amber-400" />
+              </div>
             </div>
 
-            <span class="text-xs font-semibold text-forest-800 bg-forest-100/70 px-3 py-1 rounded-full">
-              {t.theme}
-            </span>
-          </div>
+            <div class="relative z-10 flex flex-col items-center justify-center space-y-3">
+              <div class="w-16 h-16 rounded-full bg-accent-lime text-forest-950 flex items-center justify-center shadow-glow-lime transform group-hover:scale-110 transition-transform duration-300">
+                <Play class="w-7 h-7 fill-forest-950 ml-1" />
+              </div>
+              <span class="bg-black/60 text-white text-xs font-semibold px-3.5 py-1 rounded-full backdrop-blur-md border border-white/20">
+                Clique para Assistir
+              </span>
+            </div>
 
-          <blockquote class="text-neutral-700 font-serif italic text-base sm:text-lg leading-relaxed">
-            "{t.text}"
-          </blockquote>
+            <div class="relative z-10">
+              <p class="text-sm font-bold text-white font-serif">{item.title}</p>
+              <p class="text-xs text-accent-lime font-medium">{item.theme}</p>
+            </div>
+          </button>
+
         </div>
 
-        <div class="pt-6 mt-6 border-t border-neutral-200/60 flex items-center justify-between">
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-full bg-forest-900 text-accent-lime font-bold text-sm flex items-center justify-center font-serif">
-              {t.initials}
-            </div>
-            <div>
-              <p class="text-sm font-semibold text-forest-950">{t.initials}, {t.age}</p>
-              <p class="text-xs text-neutral-500">{t.modality}</p>
-            </div>
-          </div>
-
-          <div class="flex items-center gap-1 text-[11px] text-forest-700 font-medium bg-forest-50 px-2.5 py-1 rounded-lg">
-            <ShieldCheck class="w-3.5 h-3.5 text-accent-leaf" />
-            <span>Relato Verificado</span>
+        <div class="p-6 bg-forest-950 border-t border-forest-800/80 space-y-2">
+          <p class="text-xs sm:text-sm text-neutral-300 leading-relaxed">
+            {item.description}
+          </p>
+          <div class="flex items-center gap-1.5 pt-2 text-[11px] text-accent-lime font-medium">
+            <ShieldCheck class="w-3.5 h-3.5" />
+            <span>Autorizado pelo paciente</span>
           </div>
         </div>
 
@@ -96,12 +117,53 @@ const testimonials = [
     ))}
   </div>
 
-  <!-- Ethical CFP Notice -->
-  <div class="mt-8 text-center">
+  <div class="mt-14 text-center space-y-4">
+    <a 
+      href={testimonialsWhatsappUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline-flex items-center gap-2.5 bg-forest-900 hover:bg-forest-800 text-white font-semibold text-sm px-8 py-4 rounded-full transition-all duration-200 shadow-md hover:shadow-lg group"
+    >
+      <MessageCircle class="w-4 h-4 text-accent-lime" />
+      <span>Iniciar Seu Atendimento com Bauer</span>
+    </a>
+
     <p class="text-xs text-neutral-500 max-w-xl mx-auto flex items-center justify-center gap-1.5">
       <ShieldCheck class="w-4 h-4 text-forest-700 inline flex-shrink-0" />
-      <span>Depoimentos anônimos voluntários com identidade preservada em estrito cumprimento ao Código de Ética Profissional do Psicólogo (CFP).</span>
+      <span>Depoimentos reais compartilhados voluntariamente com autorização prévia dos pacientes, em conformidade com as diretrizes do Conselho Federal de Psicologia (CFP).</span>
     </p>
   </div>
 
 </section>
+
+<script>
+  const triggers = document.querySelectorAll<HTMLButtonElement>('.video-trigger');
+
+  triggers.forEach((trigger) => {
+    trigger.addEventListener('click', () => {
+      const targetId = trigger.getAttribute('data-target');
+      const videoSrc = trigger.getAttribute('data-src');
+      if (!targetId || !videoSrc) return;
+
+      const container = document.getElementById(targetId);
+      if (!container) return;
+
+      document.querySelectorAll('video').forEach((v) => v.pause());
+
+      const video = document.createElement('video');
+      video.controls = true;
+      video.autoplay = true;
+      video.playsInline = true;
+      video.preload = 'metadata';
+      video.className = 'w-full h-full object-cover bg-black';
+
+      const source = document.createElement('source');
+      source.src = videoSrc;
+      source.type = 'video/mp4';
+      video.appendChild(source);
+
+      container.replaceChildren(video);
+      video.play().catch(() => {});
+    });
+  });
+</script>

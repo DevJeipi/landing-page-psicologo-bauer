@@ -1,37 +1,49 @@
 ---
-import { Mic, Play, Radio, Headphones, Volume2, MessageCircle } from 'lucide-astro';
+import { Play, Volume2, MessageCircle, ExternalLink } from 'lucide-astro';
+import { site, whatsappUrl } from '../data/site';
 
-const podcastWhatsappMsg = encodeURIComponent("Olá, Bauer! Ouço o podcast Inspire e gostaria de iniciar meu processo de psicoterapia com você. Como funcionam os próximos horários?");
-const podcastWhatsappUrl = `https://wa.me/5551999999999?text=${podcastWhatsappMsg}`;
+const podcastWhatsappUrl = whatsappUrl("Olá, Bauer! Assisto ao podcast Inspire com Psicólogo Bauer no YouTube e gostaria de iniciar meu processo de psicoterapia com você. Como funcionam os próximos horários?");
 
 const episodes = [
   {
-    number: "#48",
-    title: "O Silêncio como Remédio: Como Acalmar a Mente sem Fugir da Realidade",
-    duration: "42 min",
-    category: "Serenidade & Calma",
-    description: "Reflexões sobre como encontrar ilhas de silêncio no cotidiano barulhento e restabelecer o equilíbrio do sistema nervoso."
+    id: "u8LklceEGo0",
+    number: "Episódio 01",
+    title: "Ingra Lyberato: Um Diálogo de Alma",
+    url: "https://www.youtube.com/watch?v=u8LklceEGo0",
+    thumb: "https://img.youtube.com/vi/u8LklceEGo0/hqdefault.jpg",
+    description: "Uma conversa profunda e sensível sobre travessias da vida, autoconhecimento e a busca pela autenticidade."
   },
   {
-    number: "#41",
-    title: "A Ilusão do Controle: Aprendendo a Soltar o que Não Depende de Você",
-    duration: "38 min",
-    category: "Gestão Emocional",
-    description: "Por que tentamos controlar tudo e como a aceitação consciente liberta uma quantidade imensa de energia vital."
+    id: "E65tT7RNr0s",
+    number: "Episódio 02",
+    title: "Dr. Jairo Mancilha: Do Coração à Consciência",
+    url: "https://www.youtube.com/watch?v=E65tT7RNr0s",
+    thumb: "https://img.youtube.com/vi/E65tT7RNr0s/hqdefault.jpg",
+    description: "Reflexões enriquecedoras sobre expansão da consciência, presença emocional e a sabedoria do coração."
   },
   {
-    number: "#35",
-    title: "Autorrealização vs. Sucesso Externo: Onde Fica a Sua Verdade?",
-    duration: "45 min",
-    category: "Propósito de Vida",
-    description: "Uma análise profunda de 28 anos de consultório sobre o que realmente preenche a alma e gera satisfação duradoura."
+    id: "j975sNssVCc",
+    number: "Episódio 03",
+    title: "Renate Muller: Silêncios, pero no mucho!",
+    url: "https://www.youtube.com/watch?v=j975sNssVCc",
+    thumb: "https://img.youtube.com/vi/j975sNssVCc/hqdefault.jpg",
+    description: "O papel do silêncio, da escuta e das palavras nas relações humanas e na saúde mental."
   },
   {
-    number: "#29",
-    title: "Ansiedade e os Ritmos da Natureza: Respeitando seu Próprio Tempo",
-    duration: "36 min",
-    category: "Natureza & Saúde Mental",
-    description: "Como a pressa artificial do mundo moderno desconecta o ser humano do seu ritmo biológico e psíquico natural."
+    id: "r3RjXJacLwM",
+    number: "Episódio 04",
+    title: "Diego Alano - The Fools: Prosperar e Empreender",
+    url: "https://www.youtube.com/watch?v=r3RjXJacLwM",
+    thumb: "https://img.youtube.com/vi/r3RjXJacLwM/hqdefault.jpg",
+    description: "Empreendedorismo com propósito, superação de desafios e o equilíbrio entre realização externa e paz interna."
+  },
+  {
+    id: "nRQLi3n6aJc",
+    number: "Episódio Especial",
+    title: "Bauer Orcina: Da Travessia à Presença",
+    url: "https://www.youtube.com/watch?v=nRQLi3n6aJc",
+    thumb: "https://img.youtube.com/vi/nRQLi3n6aJc/hqdefault.jpg",
+    description: "Como criar prosperidade interna e externa, cultivar a presença e integrar os ritmos da vida com serenidade."
   }
 ];
 ---
@@ -40,95 +52,103 @@ const episodes = [
   
   <div class="bg-forest-900 text-white rounded-[2.5rem] p-8 sm:p-12 lg:p-16 border border-forest-800 relative overflow-hidden shadow-glow-forest">
     
-    <!-- Glow effects -->
     <div class="absolute -top-32 -left-32 w-80 h-80 bg-accent-lime/10 rounded-full blur-3xl pointer-events-none"></div>
     <div class="absolute -bottom-32 -right-32 w-80 h-80 bg-sage-400/10 rounded-full blur-3xl pointer-events-none"></div>
 
     <div class="relative z-10">
       
-      <!-- Section Header -->
       <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-14">
         <div class="space-y-4 max-w-2xl">
           <div class="inline-flex items-center gap-2 bg-forest-800 text-accent-lime text-xs font-semibold px-3.5 py-1.5 rounded-full uppercase tracking-wider border border-forest-700">
-            <Mic class="w-3.5 h-3.5" />
-            <span>Conteúdo em Áudio • Apresentado por Bauer</span>
+            <span>Exclusivo no YouTube</span>
           </div>
 
           <h2 class="text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight text-white font-serif leading-tight">
-            Podcast <span class="text-accent-lime italic">Inspire</span>: reflexões para desacelerar a sua mente.
+            Inspire com <span class="text-accent-lime italic">Psicólogo Bauer</span>
           </h2>
 
           <p class="text-neutral-300 text-base leading-relaxed">
-            Episódios semanais com conversas profundas sobre autoconhecimento, inteligência emocional, psicologia e conexão com a natureza.
+            Conversas profundas com convidados especiais sobre autoconhecimento, inteligência emocional, psicologia e presença. Assista aos episódios completos no YouTube.
           </p>
         </div>
 
-        <!-- Platform Badges -->
-        <div class="flex flex-wrap items-center gap-3">
-          <div class="bg-forest-950/80 border border-forest-700/80 px-4 py-2.5 rounded-2xl flex items-center gap-2 text-xs font-medium text-neutral-200">
-            <Headphones class="w-4 h-4 text-accent-lime" />
-            <span>Disponível no Spotify</span>
+        <a 
+          href={site.podcastYoutube} 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="bg-forest-950/90 hover:bg-forest-950 border border-forest-700 hover:border-accent-lime/60 px-5 py-3 rounded-2xl flex items-center gap-3 transition-all group shadow-sm self-start lg:self-auto"
+        >
+          <div>
+            <span class="block text-xs font-bold text-white uppercase tracking-wider">Assistir no YouTube</span>
+            <span class="block text-[11px] text-neutral-400">Canal {site.podcastName}</span>
           </div>
-          <div class="bg-forest-950/80 border border-forest-700/80 px-4 py-2.5 rounded-2xl flex items-center gap-2 text-xs font-medium text-neutral-200">
-            <Radio class="w-4 h-4 text-accent-lime" />
-            <span>Apple Podcasts</span>
-          </div>
-        </div>
+          <ExternalLink class="w-4 h-4 text-neutral-400 group-hover:text-white transition-colors ml-1" />
+        </a>
       </div>
 
-      <!-- Episodes Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {episodes.map((ep) => (
-          <div class="bg-forest-950/70 hover:bg-forest-950/90 rounded-[2rem] p-6 sm:p-7 border border-forest-800/90 hover:border-forest-700 transition-all duration-300 group flex flex-col justify-between">
-            <div class="space-y-4">
-              <div class="flex items-center justify-between">
-                <span class="bg-forest-800 text-accent-lime text-xs font-bold px-2.5 py-1 rounded-lg">
+          <a
+            href={ep.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="bg-forest-950/80 hover:bg-forest-950 rounded-[2rem] overflow-hidden border border-forest-800/90 hover:border-accent-lime/40 transition-all duration-300 group flex flex-col justify-between shadow-md hover:shadow-xl"
+          >
+            <div>
+              <div class="relative aspect-video w-full overflow-hidden bg-forest-950">
+                <img 
+                  src={ep.thumb} 
+                  alt={`Capa do episódio ${ep.title} no podcast ${site.podcastName}`}
+                  width="480"
+                  height="360"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <div class="absolute inset-0 bg-forest-950/30 group-hover:bg-forest-950/10 transition-colors"></div>
+                
+                <div class="absolute inset-0 flex items-center justify-center">
+                  <div class="w-12 h-12 rounded-full bg-red-600/90 text-white flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:bg-red-600 transition-all">
+                    <Play class="w-5 h-5 fill-white ml-0.5" />
+                  </div>
+                </div>
+
+                <div class="absolute top-3 left-3 bg-forest-950/80 backdrop-blur-sm text-accent-lime text-[11px] font-bold px-2.5 py-1 rounded-lg border border-forest-700">
                   {ep.number}
-                </span>
-                <div class="flex items-center gap-2 text-xs text-neutral-400">
-                  <span class="text-accent-lime font-medium">{ep.category}</span>
-                  <span>•</span>
-                  <span>{ep.duration}</span>
                 </div>
               </div>
 
-              <h3 class="text-lg sm:text-xl font-semibold text-white group-hover:text-accent-lime transition-colors leading-snug">
-                {ep.title}
-              </h3>
+              <div class="p-6 space-y-2.5">
+                <h3 class="text-base sm:text-lg font-semibold text-white group-hover:text-accent-lime transition-colors leading-snug line-clamp-2">
+                  {ep.title}
+                </h3>
 
-              <p class="text-sm text-neutral-400 leading-relaxed">
-                {ep.description}
-              </p>
+                <p class="text-xs sm:text-sm text-neutral-400 leading-relaxed line-clamp-3">
+                  {ep.description}
+                </p>
+              </div>
             </div>
 
-            <div class="pt-6 mt-6 border-t border-forest-800/80 flex items-center justify-between">
-              <!-- Animated mini waveform -->
-              <div class="flex items-end gap-1 h-4">
-                <span class="w-0.5 bg-accent-lime/60 rounded-full h-2"></span>
-                <span class="w-0.5 bg-accent-lime/90 rounded-full h-4"></span>
-                <span class="w-0.5 bg-accent-lime rounded-full h-3"></span>
-                <span class="w-0.5 bg-accent-lime/70 rounded-full h-2"></span>
-                <span class="w-0.5 bg-accent-lime/40 rounded-full h-1"></span>
-              </div>
-
-              <span class="text-xs font-semibold text-neutral-300 group-hover:text-accent-lime flex items-center gap-1.5 transition-colors">
-                <Play class="w-3.5 h-3.5 fill-current" />
-                <span>Ouvir Episódio</span>
+            <div class="px-6 pb-6 pt-2 border-t border-forest-800/60 flex items-center justify-between text-xs text-neutral-300">
+              <span class="font-medium text-neutral-200">
+                Assistir no YouTube
+              </span>
+              <span class="text-neutral-400 group-hover:text-accent-lime transition-colors flex items-center gap-1">
+                Abrir vídeo <ExternalLink class="w-3 h-3" />
               </span>
             </div>
-          </div>
+          </a>
         ))}
       </div>
 
-      <!-- Podcast Bottom Callout with Direct WhatsApp -->
       <div class="mt-10 bg-forest-950 rounded-2xl p-6 sm:p-8 border border-forest-800 flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
         <div class="flex items-center gap-4">
           <div class="w-12 h-12 rounded-full bg-accent-lime/20 text-accent-lime flex items-center justify-center flex-shrink-0">
             <Volume2 class="w-6 h-6" />
           </div>
           <div>
-            <p class="text-base font-semibold text-white">Gostou das reflexões do Podcast Inspire?</p>
-            <p class="text-xs sm:text-sm text-neutral-400 mt-0.5">Inicie seu processo terapêutico individual diretamente com o Psicólogo Bauer.</p>
+            <p class="text-base font-semibold text-white">Gostou dos episódios do Inspire com Psicólogo Bauer?</p>
+            <p class="text-xs sm:text-sm text-neutral-400 mt-0.5">Inicie seu processo terapêutico individual diretamente com o Bauer.</p>
           </div>
         </div>
 
@@ -136,7 +156,7 @@ const episodes = [
           href={podcastWhatsappUrl}
           target="_blank"
           rel="noopener noreferrer"
-          class="bg-accent-lime hover:bg-accent-lime-hover text-forest-950 font-semibold text-sm px-6 py-3.5 rounded-full whitespace-nowrap transition-all shadow-glow-lime flex items-center gap-2"
+          class="bg-accent-lime hover:bg-accent-lime-hover text-forest-950 font-semibold text-sm px-6 py-3.5 rounded-full whitespace-nowrap transition-all shadow-glow-lime flex items-center gap-2 self-center sm:self-auto"
         >
           <MessageCircle class="w-4 h-4 text-forest-950" />
           <span>Falar no WhatsApp</span>

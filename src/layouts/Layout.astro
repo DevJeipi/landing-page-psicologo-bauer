@@ -1,5 +1,7 @@
 ---
-import '../styles/global.css';
+import "../styles/global.css";
+import { site, absoluteUrl } from "../data/site";
+import { faqs } from "../data/faqs";
 
 interface Props {
   title?: string;
@@ -7,34 +9,155 @@ interface Props {
 }
 
 const {
-  title = "Psicólogo Bauer | Terapia Presencial em Hamburgo Velho & Online",
-  description = "Mais de 28 anos de prática clínica e +6.000 mentes autorrealizadas. Atendimento presencial na Zape Reequilíbrio (Hamburgo Velho - NH) e online para todo o Brasil. Apresentador do Podcast Inspire."
+  title = site.title,
+  description = site.description,
 } = Astro.props;
+
+const canonical = absoluteUrl("/");
+const ogImage = absoluteUrl(site.ogImage);
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": `${site.url}/#website`,
+      url: site.url,
+      name: site.name,
+      inLanguage: site.language,
+      description,
+      publisher: { "@id": `${site.url}/#person` },
+    },
+    {
+      "@type": "WebPage",
+      "@id": `${site.url}/#webpage`,
+      url: canonical,
+      name: title,
+      description,
+      inLanguage: site.language,
+      isPartOf: { "@id": `${site.url}/#website` },
+      about: { "@id": `${site.url}/#person` },
+      primaryImageOfPage: ogImage,
+    },
+    {
+      "@type": "Person",
+      "@id": `${site.url}/#person`,
+      name: site.personName,
+      alternateName: site.name,
+      jobTitle: site.jobTitle,
+      description:
+        "Psicólogo clínico com prática desde 1988, atendimento presencial em Novo Hamburgo e terapia online para o Brasil.",
+      url: site.url,
+      image: ogImage,
+      knowsAbout: [
+        "psicoterapia",
+        "saúde mental",
+        "ansiedade",
+        "autoconhecimento",
+        "terapia online",
+      ],
+      worksFor: { "@id": `${site.url}/#practice` },
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": `${site.url}/#practice`,
+      name: `Consultório do ${site.name}`,
+      url: site.url,
+      image: ogImage,
+      founder: { "@id": `${site.url}/#person` },
+      areaServed: [
+        {
+          "@type": "City",
+          name: site.city,
+          containedInPlace: {
+            "@type": "State",
+            name: "Rio Grande do Sul",
+          },
+        },
+        {
+          "@type": "Country",
+          name: "Brasil",
+        },
+      ],
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: site.city,
+        addressRegion: site.region,
+        addressCountry: site.country,
+        name: site.clinic,
+      },
+      availableLanguage: ["Portuguese"],
+      foundingDate: String(site.since),
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${site.url}/#faq`,
+      mainEntity: faqs.map((faq) => ({
+        "@type": "Question",
+        name: faq.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: faq.answer,
+        },
+      })),
+    },
+  ],
+};
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta
+      name="keywords"
+      content="psicólogo Novo Hamburgo, psicólogo Bauer, terapia online, Zape Reequilíbrio, psicoterapia RS, Inspire com Psicólogo Bauer"
+    />
+    <meta name="author" content={site.name} />
     <meta name="theme-color" content="#0c2417" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="pt-BR" href={canonical} />
+    <meta name="geo.region" content="BR-RS" />
+    <meta name="geo.placename" content={`${site.city}, ${site.region}`} />
 
-    <!-- Open Graph / Meta Social -->
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.name} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:locale" content={site.locale} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:alt" content="Psicólogo Bauer em seu espaço de atendimento" />
 
-    <!-- Google Fonts: Inter & EB Garamond -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <link rel="dns-prefetch" href="https://wa.me" />
+    <link rel="dns-prefetch" href="https://img.youtube.com" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..700;1,400..700&family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link
+      rel="preload"
+      as="image"
+      href="/bauer-foto-1.avif"
+      type="image/avif"
+      fetchpriority="high"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   </head>
-  <body class="min-h-screen bg-white text-neutral-900 selection:bg-forest-900 selection:text-accent-lime font-sans">
+  <body class="min-h-screen bg-white text-neutral-900 font-sans">
     <slot />
   </body>
 </html>
