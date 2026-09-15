@@ -10,7 +10,7 @@ export const site = {
   region: "RS",
   country: "BR",
   clinic: "Zape Reequilíbrio",
-  since: 1988,
+  since: 1998,
   patientsServed: 8000,
   podcastName: "Inspire com Psicólogo Bauer",
   podcastYoutube: "https://www.youtube.com/@podcastinspire",
@@ -18,7 +18,7 @@ export const site = {
   title:
     "Psicólogo Bauer em Novo Hamburgo | Terapia presencial na Zape Reequilíbrio e online",
   description:
-    "Psicólogo clínico em Novo Hamburgo com prática desde 1988 e mais de 8.000 atendimentos. Consultas presenciais na Zape Reequilíbrio e terapia online para todo o Brasil. Apresentador do podcast Inspire com Psicólogo Bauer.",
+    "Psicólogo clínico em Novo Hamburgo com prática desde 1998 e mais de 8.000 atendimentos. Consultas presenciais na Zape Reequilíbrio e terapia online para todo o Brasil. Apresentador do podcast Inspire com Psicólogo Bauer.",
 } as const;
 
 export function whatsappUrl(message: string) {
