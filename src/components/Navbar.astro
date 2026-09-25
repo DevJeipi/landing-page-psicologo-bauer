@@ -1,45 +1,50 @@
 ---
-import { MessageCircle, Menu, X } from 'lucide-astro';
-import { whatsappUrl } from '../data/site';
-
-const headerWhatsappUrl = whatsappUrl("Olá, Psicólogo Bauer! Gostaria de agendar uma primeira sessão de psicoterapia.");
+import { Send, Menu, X } from 'lucide-astro';
 
 const navLinks = [
   { href: "#sobre", label: "Sobre" },
   { href: "#modalidades", label: "Atendimentos" },
-  { href: "#podcast", label: "Podcast" },
   { href: "#depoimentos", label: "Depoimentos" },
+  { href: "#podcast", label: "Podcast" },
   { href: "#faq", label: "Dúvidas" },
 ];
 ---
 
-<header class="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-neutral-100">
+<header class="sticky top-0 z-50 w-full bg-white/90 backdrop-blur-xl border-b border-neutral-200/60 shadow-sm">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-[1fr_auto] lg:grid-cols-[auto_1fr_auto] items-center h-16 gap-4">
-      <a href="/" class="flex items-baseline gap-2 min-w-0 justify-self-start">
-        <span class="text-2xl font-bold font-serif tracking-tight text-forest-950 leading-none">
+    <div class="flex items-center justify-between h-16">
+
+      <!-- Brand -->
+      <a href="/" class="flex items-baseline gap-2 shrink-0">
+        <span class="text-xl sm:text-2xl font-bold font-serif tracking-tight text-forest-950 leading-none">
           Bauer
         </span>
-        <span class="text-[11px] font-medium tracking-wide text-forest-700 uppercase whitespace-nowrap">
+        <span class="text-[10px] sm:text-[11px] font-semibold tracking-widest text-forest-600 uppercase leading-none">
           Psicólogo
         </span>
       </a>
 
-      <nav class="hidden lg:flex items-center justify-center gap-6 text-sm font-medium text-neutral-600 whitespace-nowrap" aria-label="Principal">
+      <!-- Desktop Nav (centered) -->
+      <nav class="hidden lg:flex items-center gap-1 mx-auto" aria-label="Principal">
         {navLinks.map((link) => (
-          <a class="hover:text-forest-900 transition-colors" href={link.href}>{link.label}</a>
+          <a
+            class="text-sm font-medium text-neutral-600 hover:text-forest-900 hover:bg-forest-50 px-3.5 py-2 rounded-lg transition-all"
+            href={link.href}
+          >
+            {link.label}
+          </a>
         ))}
       </nav>
 
-      <div class="flex items-center justify-end gap-2">
+      <!-- Right: CTA + Mobile toggle -->
+      <div class="flex items-center gap-3 shrink-0">
         <a
-          href={headerWhatsappUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="bg-forest-900 hover:bg-forest-800 text-white text-sm font-medium px-4 py-2 rounded-full transition-colors flex items-center gap-2 whitespace-nowrap"
+          href="#agendamento"
+          class="bg-forest-900 hover:bg-forest-800 text-white text-xs sm:text-sm font-semibold px-4 sm:px-5 py-2.5 rounded-full transition-colors flex items-center gap-2"
         >
-          <MessageCircle class="w-4 h-4 text-accent-lime shrink-0" />
-          <span class="hidden sm:inline">WhatsApp</span>
+          <Send class="w-3.5 h-3.5 text-accent-lime shrink-0" />
+          <span class="hidden sm:inline">Agendar Sessão</span>
+          <span class="sm:hidden">Agendar</span>
         </a>
 
         <button
@@ -48,20 +53,31 @@ const navLinks = [
           aria-label="Abrir menu de navegação"
           aria-expanded="false"
           aria-controls="mobile-menu"
-          class="lg:hidden p-2 rounded-xl text-neutral-800 hover:bg-neutral-100"
+          class="lg:hidden p-2 rounded-xl text-neutral-700 hover:bg-neutral-100 transition-colors"
         >
-          <Menu id="menu-icon-open" class="w-6 h-6 block" />
-          <X id="menu-icon-close" class="w-6 h-6 hidden" />
+          <Menu id="menu-icon-open" class="w-5 h-5 block" />
+          <X id="menu-icon-close" class="w-5 h-5 hidden" />
         </button>
       </div>
+
     </div>
   </div>
 
-  <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-neutral-100 px-6 py-5">
-    <nav class="flex flex-col gap-1 text-base font-medium text-neutral-700" aria-label="Menu mobile">
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-neutral-100 px-6 py-4 shadow-lg">
+    <nav class="flex flex-col gap-0.5 text-base font-medium text-neutral-700" aria-label="Menu mobile">
       {navLinks.map((link) => (
-        <a class="mobile-link py-2.5 hover:text-forest-900" href={link.href}>{link.label}</a>
+        <a class="mobile-link py-3 px-3 hover:text-forest-900 hover:bg-forest-50 rounded-lg transition-colors" href={link.href}>{link.label}</a>
       ))}
+      <div class="pt-3 mt-2 border-t border-neutral-100">
+        <a
+          href="#agendamento"
+          class="mobile-link w-full bg-forest-900 text-white text-sm font-semibold py-3 px-4 rounded-xl flex items-center justify-center gap-2"
+        >
+          <Send class="w-4 h-4 text-accent-lime" />
+          <span>Agendar Sessão</span>
+        </a>
+      </div>
     </nav>
   </div>
 </header>

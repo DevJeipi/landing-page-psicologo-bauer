@@ -1,0 +1,182 @@
+---
+import { Send, Sparkles, Shield, User, Phone, Mail, CheckCircle, AlertCircle } from 'lucide-astro';
+---
+
+<section id="agendamento" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+  
+  <div class="relative bg-gradient-to-br from-forest-950 via-forest-900 to-forest-850 rounded-[2.5rem] p-8 sm:p-12 lg:p-16 border border-forest-800 shadow-2xl overflow-hidden text-white">
+    
+    <!-- Ambient Glows -->
+    <div class="absolute -top-32 -left-32 w-80 h-80 bg-accent-lime/15 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute -bottom-32 -right-32 w-80 h-80 bg-sage-400/10 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+
+      <!-- Left: Copy -->
+      <div class="space-y-6 text-center lg:text-left">
+        <div class="inline-flex items-center gap-2 bg-forest-800 text-accent-lime text-xs font-semibold px-3.5 py-1.5 rounded-full uppercase tracking-wider border border-forest-700">
+          <Sparkles class="w-3.5 h-3.5" />
+          <span>Inicie Seu Atendimento</span>
+        </div>
+
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight text-white font-serif leading-tight">
+          Pronto para dar o primeiro passo rumo à sua <span class="italic text-accent-lime">serenidade</span>?
+        </h2>
+
+        <p class="text-neutral-300 text-base sm:text-lg leading-relaxed max-w-lg mx-auto lg:mx-0">
+          Preencha o formulário ao lado com seus dados. O <strong>Psicólogo Bauer</strong> entrará em contato para agendar a sua primeira sessão.
+        </p>
+
+        <div class="flex items-center justify-center lg:justify-start gap-2 text-xs text-neutral-400 pt-2">
+          <Shield class="w-4 h-4 text-accent-lime flex-shrink-0" />
+          <span>Seus dados estão protegidos e serão usados exclusivamente para contato terapêutico, com 100% de sigilo ético (CFP).</span>
+        </div>
+      </div>
+
+      <!-- Right: Form -->
+      <div>
+        <form id="contact-form" class="bg-forest-950/80 rounded-3xl p-7 sm:p-8 border border-forest-700/80 space-y-5 shadow-lg">
+          
+          <!-- Nome -->
+          <div class="space-y-1.5">
+            <label for="form-nome" class="text-sm font-medium text-neutral-200 flex items-center gap-2">
+              <User class="w-4 h-4 text-accent-lime" />
+              Nome completo
+            </label>
+            <input
+              type="text"
+              id="form-nome"
+              name="nome"
+              required
+              placeholder="Seu nome"
+              autocomplete="name"
+              class="w-full bg-forest-900/80 border border-forest-700 text-white placeholder-neutral-500 rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:ring-2 focus:ring-accent-lime/60 focus:border-accent-lime/60 transition-all"
+            />
+          </div>
+
+          <!-- Telefone -->
+          <div class="space-y-1.5">
+            <label for="form-telefone" class="text-sm font-medium text-neutral-200 flex items-center gap-2">
+              <Phone class="w-4 h-4 text-accent-lime" />
+              Telefone / WhatsApp
+            </label>
+            <input
+              type="tel"
+              id="form-telefone"
+              name="telefone"
+              required
+              placeholder="(51) 99999-9999"
+              autocomplete="tel"
+              class="w-full bg-forest-900/80 border border-forest-700 text-white placeholder-neutral-500 rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:ring-2 focus:ring-accent-lime/60 focus:border-accent-lime/60 transition-all"
+            />
+          </div>
+
+          <!-- E-mail -->
+          <div class="space-y-1.5">
+            <label for="form-email" class="text-sm font-medium text-neutral-200 flex items-center gap-2">
+              <Mail class="w-4 h-4 text-accent-lime" />
+              E-mail
+            </label>
+            <input
+              type="email"
+              id="form-email"
+              name="email"
+              required
+              placeholder="seu@email.com"
+              autocomplete="email"
+              class="w-full bg-forest-900/80 border border-forest-700 text-white placeholder-neutral-500 rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:ring-2 focus:ring-accent-lime/60 focus:border-accent-lime/60 transition-all"
+            />
+          </div>
+
+          <!-- Submit Button -->
+          <button
+            type="submit"
+            id="form-submit-btn"
+            class="w-full bg-accent-lime hover:bg-accent-lime-hover text-forest-950 font-bold py-4 px-6 rounded-xl flex items-center justify-center gap-2.5 transition-all duration-200 shadow-md text-sm sm:text-base cursor-pointer mt-2"
+          >
+            <Send class="w-5 h-5" />
+            <span id="btn-text">Solicitar Contato</span>
+          </button>
+
+          <!-- Feedback Messages (hidden by default) -->
+          <div id="form-success" class="hidden items-center gap-3 bg-emerald-900/40 border border-emerald-700/50 text-emerald-200 text-sm p-4 rounded-xl">
+            <CheckCircle class="w-5 h-5 text-emerald-400 flex-shrink-0" />
+            <span><strong>Enviado com sucesso!</strong> O Psicólogo Bauer entrará em contato em breve.</span>
+          </div>
+
+          <div id="form-error" class="hidden items-center gap-3 bg-red-900/40 border border-red-700/50 text-red-200 text-sm p-4 rounded-xl">
+            <AlertCircle class="w-5 h-5 text-red-400 flex-shrink-0" />
+            <span><strong>Erro ao enviar.</strong> Por favor, tente novamente ou entre em contato por outro canal.</span>
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+<script>
+  const SHEETS_URL = "https://script.google.com/macros/s/AKfycby-ScVTgkBfeR8ugS_E9xkRDKl2x9zuWaMrE92BaWWckjkQDVSH7PF3rp50H5nYUFMSUQ/exec";
+
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  const btnText = document.getElementById('btn-text')!;
+  const submitBtn = document.getElementById('form-submit-btn') as HTMLButtonElement;
+  const successEl = document.getElementById('form-success')!;
+  const errorEl = document.getElementById('form-error')!;
+  const phoneInput = document.getElementById('form-telefone') as HTMLInputElement;
+
+  // Phone mask: (XX) XXXXX-XXXX
+  phoneInput.addEventListener('input', () => {
+    let v = phoneInput.value.replace(/\D/g, '').slice(0, 11);
+    if (v.length > 6) {
+      v = `(${v.slice(0,2)}) ${v.slice(2,7)}-${v.slice(7)}`;
+    } else if (v.length > 2) {
+      v = `(${v.slice(0,2)}) ${v.slice(2)}`;
+    } else if (v.length > 0) {
+      v = `(${v}`;
+    }
+    phoneInput.value = v;
+  });
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    
+    // Reset messages
+    successEl.classList.add('hidden');
+    successEl.classList.remove('flex');
+    errorEl.classList.add('hidden');
+    errorEl.classList.remove('flex');
+    
+    // Snappy loading state
+    submitBtn.disabled = true;
+    submitBtn.classList.add('opacity-75');
+    btnText.textContent = 'Enviando...';
+
+    const nome = (form.elements.namedItem('nome') as HTMLInputElement).value.trim();
+    const telefone = (form.elements.namedItem('telefone') as HTMLInputElement).value.trim();
+    const email = (form.elements.namedItem('email') as HTMLInputElement).value.trim();
+
+    // Fire request in background (text/plain avoids CORS preflight overhead; keepalive ensures delivery)
+    fetch(SHEETS_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify({ nome, telefone, email }),
+      keepalive: true,
+    }).catch(() => {
+      // Ignored in background
+    });
+
+    // Perceived performance: instant affirmative feedback after 250ms micro-transition
+    setTimeout(() => {
+      submitBtn.disabled = false;
+      submitBtn.classList.remove('opacity-75');
+      btnText.textContent = 'Solicitar Contato';
+      successEl.classList.remove('hidden');
+      successEl.classList.add('flex');
+      form.reset();
+    }, 250);
+  });
+</script>
